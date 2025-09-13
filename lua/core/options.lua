@@ -1,0 +1,32 @@
+vim.opt.autowrite = true -- Enable auto write
+vim.opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- Sync with system clipboard
+vim.opt.confirm = true -- Confirm to save changes before exiting the modified buffer
+vim.opt.cursorline = true -- Enable highlighting of the current line
+vim.opt.expandtab = true -- Use spaces instead of tabs
+vim.opt.ignorecase = true -- Ignore case
+vim.opt.number = true -- Always show line numbers
+vim.opt.relativenumber = true -- Show line numbers in relative format
+vim.opt.linebreak = true -- Wrap lines at convenient points
+vim.opt.mouse = "a" -- Enable mouse support
+vim.opt.scrolloff = 8 -- Lines of context
+vim.opt.sidescrolloff = 5 -- Columns of context
+vim.opt.shiftround = true -- Round indent
+vim.opt.shiftwidth = 4 -- Size of an indent
+vim.opt.showmode = false -- Don't show mode since we have a status line
+vim.opt.signcolumn = "yes" -- Always show the signcolumn, otherwise it would shift the text each time
+vim.opt.smartcase = true -- Don't ignore case with capitals
+vim.opt.tabstop = 4 -- Number of spaces tabs count for
+vim.opt.timeoutlen = vim.g.vscode and 1000 or 300 -- Lower than default (1000) to quickly trigger which-key
+vim.opt.undofile = true
+vim.opt.undolevels = 10000
+vim.opt.termguicolors = true -- True color support
+vim.opt.updatetime = 200 -- Save swap file and trigger CursorHold
+vim.opt.virtualedit = "block" -- Allow cursor to move where there is no text in visual block mode
+vim.opt.wildmode = "longest:full,full" -- Command-line completion mode
+vim.opt.winminwidth = 5 -- Minimum window width
+vim.opt.wrap = false -- Disable line wrap
+vim.opt.cmdheight = 0 -- Hide command line unless needed
+vim.opt.completeopt = { "menu", "menuone", "noselect" } -- Options for insert mode completion
+vim.opt.nrformats = { "bin", "hex", "unsigned" }
+vim.opt.fillchars = { eob = " " } -- disable `~` on nonexistent lines
+vim.opt.shortmess:append({ s = true, I = true, c = true, C = true, W = true })
