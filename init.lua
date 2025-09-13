@@ -31,7 +31,7 @@ for _, file in ipairs(plugin_files) do
   local spec = dofile(file)
   if type(spec) == "table" then
     -- if the file returns a list of specs, extend; otherwise insert single
-    if vim.tbl_islist(spec) then
+    if vim.islist(spec) then
       vim.list_extend(plugins, spec)
     else
       table.insert(plugins, spec)
