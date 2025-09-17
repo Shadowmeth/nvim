@@ -22,6 +22,7 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Load core modules
 require("core")
+require("lsp")
 
 -- Load plugins: gather plugin specs from lua/plugins/*.lua
 local plugin_dir = vim.fn.stdpath("config") .. "/lua/plugins"
@@ -45,4 +46,3 @@ require("lazy").setup(plugins, {
     enabled = true, -- auto-reload when plugin files change
   },
 })
-
