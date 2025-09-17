@@ -20,7 +20,7 @@ return {
                 keymaps = {
                     node_incremental = "v",
                     node_decremental = "V",
-                    init_selection = "ts",
+                    init_selection = false,
                     scope_incremental = false,
                 },
             },
