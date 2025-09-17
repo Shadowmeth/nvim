@@ -24,7 +24,7 @@ return {
             { "<leader>tb", function() builtin.buffers() end, silent = true, desc = "Buffers"},
             { "<leader>tf", function() builtin.find_files() end, silent = true, desc = "Files"},
             { "<leader>tg", function() builtin.live_grep() end, silent = true, desc = "Live grep"},
-            { "<leader>tf", function() builtin.current_buffer_fuzzy_find() end, silent = true, desc = "Fuzzy current file"}
+            { "<leader>tz", function() builtin.current_buffer_fuzzy_find() end, silent = true, desc = "Fuzzy current file"},
         })
     end,
 }
