@@ -1,3 +1,5 @@
+require("plugins.install_only")
 require("plugins.hlsearch")
 require("plugins.colorscheme")
-require("plugins.install_only")
+require("plugins.lualine")
+require("plugins.neo_tree")
