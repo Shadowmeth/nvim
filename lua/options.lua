@@ -71,6 +71,9 @@ opt.fillchars = {
   eob = " ",
 }
 
+-- Code Folding
+opt.foldlevelstart = 99
+
 local write_cmds = { "w", "wa", "wq", "wqa", "x", "xa", "up", "update" }
 
 for _, cmd in ipairs(write_cmds) do
