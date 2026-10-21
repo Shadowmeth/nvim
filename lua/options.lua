@@ -85,3 +85,19 @@ end
 -- System clipboard: left off on purpose (see the dock flashing issue).
 -- Use "+y and "+p when you want it, or uncomment the line below.
 opt.clipboard = "unnamedplus"
+
+-- To use system clipboard:
+-- sudo apt install wl-clipboard
+local osc52 = require("vim.ui.clipboard.osc52")
+
+vim.g.clipboard = {
+  name = "osc52",
+  copy = {
+    ["+"] = osc52.copy("+"),
+    ["*"] = osc52.copy("*"),
+  },
+  paste = {
+    ["+"] = { "wl-paste", "--no-newline" },
+    ["*"] = { "wl-paste", "--no-newline", "--primary" },
+  },
+}
