@@ -82,9 +82,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- Other LSP actions
     map("<leader>lr", vim.lsp.buf.rename, "Rename symbol")
     map("<leader>la", vim.lsp.buf.code_action, "Code action", { "n", "x" })
-    map("<leader>lR", vim.lsp.buf.references, "References")
-    map("<leader>ls", vim.lsp.buf.document_symbol, "Document symbols")
-    map("<leader>lS", vim.lsp.buf.workspace_symbol, "Workspace symbols")
+    map("<leader>lR", function() Snacks.picker.lsp_references() end, "References")
+    map("<leader>ls", function() Snacks.picker.lsp_symbols() end, "Document symbols")
+    map("<leader>lS", function() Snacks.picker.lsp_workspace_symbols() end, "Workspace symbols")
     map("<leader>li", vim.lsp.buf.incoming_calls, "Incoming calls")
     map("<leader>lo", vim.lsp.buf.outgoing_calls, "Outgoing calls")
     map("<leader>lh", vim.lsp.buf.signature_help, "Signature help")
