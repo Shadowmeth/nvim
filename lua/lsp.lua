@@ -68,6 +68,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- grr (references), gri (implementation), grt (type definition),
     -- gO (document symbols), <C-s> in insert mode (signature help).
 
+    require("which-key").add({
+      { "<leader>l", group = "LSP" },
+    })
+
     -- Go to
     map("gd", vim.lsp.buf.definition, "Go to definition")
     map("gD", vim.lsp.buf.declaration, "Go to declaration")
@@ -91,6 +95,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
+require("which-key").add({
+  { "<leader>u", group = "Toggles" },
+})
 -- Toggles
 local map = vim.keymap.set
 

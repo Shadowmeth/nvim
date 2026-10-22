@@ -14,3 +14,9 @@ local defaults = {
 }
 
 wk.setup(defaults)
+
+wk.add({
+  { "<leader>b", group = "Buffer" },
+  { "<leader>f", group = "Find" },
+  { "<leader>s", group = "Search" },
+})
