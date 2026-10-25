@@ -1,8 +1,4 @@
 -- dap.lua
---
--- Debugging with nvim-dap + dap-ui + virtual text.
--- C/C++ uses cpptools (install once with :MasonInstall cpptools).
--- Needs gdb installed, and your program built with -g.
 
 vim.pack.add({
   "https://github.com/mfussenegger/nvim-dap",
@@ -13,10 +9,6 @@ vim.pack.add({
 
 local dap = require("dap")
 local dapui = require("dapui")
-
----------------------------------------------------------------------------
--- Add-ons
----------------------------------------------------------------------------
 
 dapui.setup()
 
@@ -32,6 +24,7 @@ end
 dap.listeners.before.launch.dapui_config = function()
   dapui.open()
 end
+
 -- Close the REPL and program output buffers left behind by a session.
 -- (dap-ui's own panel buffers are hidden and reused, so they are kept;
 -- dapui.close() already closes their windows.)
@@ -69,9 +62,6 @@ dap.listeners.before.event_terminated.dapui_config = on_session_end
 dap.listeners.before.event_exited.dapui_config = on_session_end
 dap.listeners.after.disconnect.dapui_config = on_session_end
 
----------------------------------------------------------------------------
--- Signs (Nerd Font icons as unicode escapes)
----------------------------------------------------------------------------
 
 local signs = {
   DapBreakpoint = { text = "\u{f111}", texthl = "DiagnosticError" },
@@ -89,10 +79,7 @@ for name, sign in pairs(signs) do
   vim.fn.sign_define(name, sign)
 end
 
----------------------------------------------------------------------------
--- C / C++ with cpptools
----------------------------------------------------------------------------
-
+-- C/C++ with cpp tools
 dap.adapters.cppdbg = {
   id = "cppdbg",
   type = "executable",
@@ -157,6 +144,31 @@ dap.configurations.cpp = {
     miDebuggerServerAddress = function()
       return vim.fn.input("gdbserver address: ", "localhost:1234")
     end,
+    setupCommands = pretty_printing,
+  },
+  {
+    -- Bare-metal (STM32 etc.). Start a GDB server first:
+    --   OpenOCD:      openocd -f interface/stlink.cfg -f target/stm32f4x.cfg   (port 3333)
+    --   ST-LINK:      st-util   (port 4242)
+    name = "STM32 (OpenOCD / ST-LINK)",
+    type = "cppdbg",
+    request = "launch",
+    program = function()
+      return vim.fn.input("Path to .elf: ", vim.fn.getcwd() .. "/build/", "file")
+    end,
+    cwd = "${workspaceFolder}",
+    MIMode = "gdb",
+    miDebuggerPath = "arm-none-eabi-gdb",
+    miDebuggerServerAddress = function()
+      return vim.fn.input("GDB server address: ", "localhost:3333")
+    end,
+    targetArchitecture = "arm",
+    stopAtConnect = true,
+    postRemoteConnectCommands = {
+      { text = "monitor reset halt" }, -- stop the chip
+      { text = "load" },               -- flash the .elf
+      { text = "monitor reset halt" }, -- start fresh from reset
+    },
     setupCommands = pretty_printing,
   },
 }
