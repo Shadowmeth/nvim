@@ -2,7 +2,10 @@ vim.pack.add({ "https://github.com/folke/snacks.nvim" })
 
 ---@type snacks.config
 local config = {
-  picker = { enabled = true },
+  picker = {
+    enabled = true,
+    ui_select = false,
+  },
   notifier = {
     enabled = true,
     timeout = 3000,
