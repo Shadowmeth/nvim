@@ -64,7 +64,7 @@ opt.timeoutlen = 300
 
 -- Look and feel
 opt.termguicolors = true
-opt.mouse = ""
+opt.mouse = "a"
 opt.pumheight = 10
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.fillchars = {

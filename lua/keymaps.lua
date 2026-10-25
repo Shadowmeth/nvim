@@ -3,10 +3,10 @@
 local map = vim.keymap.set
 
 -- Resize windows
-map("n", "<C-Left>", "<cmd>vertical resize -2<CR>", { desc = "Narrower window" })
-map("n", "<C-Right>", "<cmd>vertical resize +2<CR>", { desc = "Wider window" })
-map("n", "<C-Up>", "<cmd>resize +2<CR>", { desc = "Taller window" })
-map("n", "<C-Down>", "<cmd>resize -2<CR>", { desc = "Shorter window" })
+map("n", "<Left>", "<cmd>vertical resize -2<CR>", { desc = "Narrower window" })
+map("n", "<Right>", "<cmd>vertical resize +2<CR>", { desc = "Wider window" })
+map("n", "<Up>", "<cmd>resize +2<CR>", { desc = "Taller window" })
+map("n", "<Down>", "<cmd>resize -2<CR>", { desc = "Shorter window" })
 
 -- Splits
 map("n", "<leader>\\", "<cmd>vsplit<CR>", { desc = "Vertical split" })
