@@ -6,6 +6,7 @@
 -- Add server names here. Each name must match a file in nvim/lsp/.
 local servers = {
   "clangd",
+  "basedpyright",
 }
 
 vim.lsp.enable(servers)
