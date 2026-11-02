@@ -9,7 +9,7 @@ local autocmd = vim.api.nvim_create_autocmd
 -- 4-space indent for these filetypes (default is 2, set in options.lua)
 autocmd("FileType", {
   group = augroup("indent_4"),
-  pattern = { "c", "cpp", "python", "rust" },
+  pattern = { "c", "cpp", "python", "rust", "java" },
   callback = function()
     vim.opt_local.shiftwidth = 4
     vim.opt_local.tabstop = 4
