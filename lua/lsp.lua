@@ -7,6 +7,7 @@
 local servers = {
   "clangd",
   "basedpyright",
+  "jdtls",
 }
 
 vim.lsp.enable(servers)
