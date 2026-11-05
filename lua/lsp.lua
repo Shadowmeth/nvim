@@ -8,6 +8,7 @@ local servers = {
   "clangd",
   "basedpyright",
   "jdtls",
+  "neocmake",
 }
 
 vim.lsp.enable(servers)
