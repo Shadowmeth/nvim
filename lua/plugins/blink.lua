@@ -36,6 +36,11 @@ local config = {
     default = { "lsp", "path", "snippets", "buffer" },
   },
 
+  -- Show the function's parameters while I type its arguments
+  signature = {
+    enabled = true,
+  },
+
   -- Rust fuzzy matcher, falls back to Lua with a warning if missing
   fuzzy = {
     implementation = "prefer_rust_with_warning",
