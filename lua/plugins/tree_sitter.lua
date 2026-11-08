@@ -125,11 +125,12 @@ for key, obj in pairs(objects) do
   end, { desc = "inside " .. desc })
 end
 
--- Move and swap: only for block, function, argument (like AstroNvim)
+-- Move and swap: block, function, argument, class
 local movable = {
   k = { "@block.outer", "block" },
   f = { "@function.outer", "function" },
   a = { "@parameter.inner", "argument" },
+  c = { "@class.outer", "class" },
 }
 
 for key, obj in pairs(movable) do
@@ -138,6 +139,11 @@ for key, obj in pairs(movable) do
 
   -- ]f next start, ]F next end, [f previous start, [F previous end
   vim.keymap.set({ "n", "x", "o" }, "]" .. key, function()
+    -- Keep the built-in ]c (next change) in diff mode
+    if key == "c" and vim.wo.diff then
+      vim.cmd.normal({ "]c", bang = true })
+      return
+    end
     move.goto_next_start(query, "textobjects")
   end, { desc = "Next " .. desc .. " start" })
 
@@ -146,6 +152,11 @@ for key, obj in pairs(movable) do
   end, { desc = "Next " .. desc .. " end" })
 
   vim.keymap.set({ "n", "x", "o" }, "[" .. key, function()
+    -- Keep the built-in [c (previous change) in diff mode
+    if key == "c" and vim.wo.diff then
+      vim.cmd.normal({ "[c", bang = true })
+      return
+    end
     move.goto_previous_start(query, "textobjects")
   end, { desc = "Previous " .. desc .. " start" })
 
