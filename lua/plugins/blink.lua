@@ -36,9 +36,12 @@ local config = {
     default = { "lsp", "path", "snippets", "buffer" },
   },
 
-  -- Show the function's parameters while I type its arguments
+  -- Show the function's parameters
   signature = {
     enabled = true,
+    trigger = {
+      enabled = false,
+    },
   },
 
   -- Rust fuzzy matcher, falls back to Lua with a warning if missing
