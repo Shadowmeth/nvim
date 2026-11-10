@@ -47,7 +47,7 @@ opt.wrap = false
 -- Show hidden characters
 opt.list = true
 opt.listchars = {
-  tab = "» ",
+  tab = "  ",
   trail = "·",
   nbsp = "␣",
 }
