@@ -5,6 +5,9 @@ vim.pack.add({
   "https://github.com/nvim-neotest/nvim-nio", -- needed by dap-ui
   "https://github.com/rcarriga/nvim-dap-ui",
   "https://github.com/theHamsta/nvim-dap-virtual-text",
+
+  -- Preconfigured DAP extensions
+  "https://github.com/mfussenegger/nvim-dap-python"
 })
 
 local dap = require("dap")
@@ -78,6 +81,9 @@ local signs = {
 for name, sign in pairs(signs) do
   vim.fn.sign_define(name, sign)
 end
+
+-- Python with debugpy
+require("dap-python").setup(vim.fn.expand("~/.virtualenvs/debugpy/bin/python"))
 
 -- C/C++ with cpp tools
 dap.adapters.cppdbg = {
